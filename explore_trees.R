@@ -1,8 +1,6 @@
 library(ape)
 library(phangorn)
-
-
-
+library(phytools)
 
 # Pama-Nyungan languages
 all.trees <- read.nexus("PamaNyungan/prunedPN.trees")
@@ -31,6 +29,7 @@ plot(ct, show.node.label=FALSE, root.edge = TRUE, no.margin = TRUE,
      font = 1, label.offset = .05)
 nodelabels(c(NA, ct$node.label[-1]), frame="none", adj = c(1.15,1.25), cex = .9)
 
+#Nodes with no lable have very high posterior probability
 
 # Densitree ----------------------------------------------------------------
 

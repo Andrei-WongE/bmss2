@@ -11,6 +11,8 @@ all.trees <- read.nexus("PamaNyungan/PNY10_285.trees")
 d <- read.table("PamaNyungan/FL_VlengthC_normalised.tsv", header=T)
 
 # Prune the trees to keep only leaves for which we have Functional Load data.
+tr <- all.trees[[1]]
+
 ll <- d$tip_label
 idx <- which(tr$tip.label %in% ll)
 
@@ -35,12 +37,9 @@ contMap(tr,  trait)
 # Reconstruct ancestral value
 fastAnc(tr, trait, CI=T)
 
-
-
-
 # Test for correlated evolution between traits
-ci =<-1:6 # index of columns of interest
-covm <- phyl.vcv(as.matrix(d[tip.sort, ci]), vcv(tr), 1)
+ci <- 1:6 # index of columns of interest
+covm <- phyl.vcv(as.matrix(d[tip.sort, ci]), vcv(tr), )
 
 corrplot(cov2cor(covm$R))
 
